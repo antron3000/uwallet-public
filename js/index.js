@@ -373,6 +373,7 @@ async function displayTxHistoryTokens(){
 
 
 async function switchNetwork(){
+
 	if(document.getElementById("mainnet_network").checked){
 		networkId = 1
 		networkName = "homestead"
@@ -388,6 +389,10 @@ async function switchNetwork(){
 	}else if(document.getElementById("goerli_network").checked){
 		networkId = 5
 		networkName = "goerli"
+	} else{
+		console.log("love")
+		document.getElementById("mainnet_network").checked = true;
+		switchNetwork()
 	}
 
 }
