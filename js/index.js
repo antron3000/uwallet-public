@@ -395,6 +395,8 @@ async function switchNetwork(){
 async function switchWallet(web3) {
 	console.log("abc")
 
+		//document.getElementById("mainnet_network").checked=true
+
 		await switchNetwork()
 		console.log("test1")
 		let mnemonic = localStorage.getItem("mnemonic")
