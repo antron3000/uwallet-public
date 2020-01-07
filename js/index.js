@@ -442,7 +442,6 @@ function enableNetworkButtons() {
 		document.getElementById("kovan_network").disabled = false;
 		document.getElementById("rinkeby_network").disabled = false;
 		document.getElementById("goerli_network").disabled = false;
-
 }
 
 function disableNetworkButtons() {
