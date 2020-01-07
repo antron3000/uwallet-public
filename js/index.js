@@ -393,7 +393,7 @@ async function switchNetwork(){
 }
 
 async function switchWallet(web3) {
-	console.log("abc")
+	console.log("abcd")
 
 		//document.getElementById("mainnet_network").checked=true
 
