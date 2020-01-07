@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script charset="utf-8"
+          src="https://cdn.ethers.io/scripts/ethers-v4.min.js"
+          type="text/javascript">
+  </script>
+  <script  src="js/index.js">
+  </script>
+  <script  src="js/ens.js">
+  </script>
+  <script  src="js/token.js">
+  </script>
+  <script  src="js/web2Functions.js">
+  </script>
+  <script src="js/main.js"></script>
+
+  <script>
+  initialize()
+  </script>
+
+  <meta charset="utf-8">
+  <title>Hello World</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="white"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Hello World">
+  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+</head>
+<body>
+  <input type="radio" name="network" value="1" id="mainnet_network" onchange="switchWallet(web3)">Mainnet</input>
+  <input type="radio" name="network" value="3" id="ropsten_network" onchange="switchWallet(web3)">Ropsten</input>
+  <input type="radio" name="network" value="42" id="kovan_network" onchange="switchWallet(web3)">Kovan</input>
+  <input type="radio" name="network" value="4" id="rinkeby_network" onchange="switchWallet(web3)">Rinkeby</input>
+  <input type="radio" name="network" value="5" id="goerli_network" onchange="switchWallet(web3)">Goerli</input>
+
+  <hr>
+
+  <input id="tokenAddress" onchange="updateToken()">Token Address</input>
+  <hr>
+
+  <label id="myAddress">My Address: </label> <br>
+  <label id="myEthBalance">My Eth Balance: </label>
+  <hr>
+  <h3>ERC20</h3>
+  <h5>token details</h5>
+  <label id="nameLabel">Token Name: </label><br>
+  <label id="symbolLabel">Symbol: </label><br>
+  <label id="totalSupplyLabel">Total Supply: </label><br>
+  <label id="contractLink">Contract: </label><br>
+
+
+
+  <h5>Balances</h5>
+  <label id="balanceLabel">Balance: </label><br>
+  <label>Approved: </label>
+  <input id = "approvedTo" placeholder="spender..." onchange="allowance()"></input>
+  <label id = "approvedAmount"></label>
+
+  <h5>Token Functions</h5>
+  <input id="transferTo" placeholder="transfer to..." ></input>
+  <input id="transferAmount" placeholder="amount"></input>
+  <button onclick="transfer()">Transfer</button>
+  <button id="metaTransferButton" onclick="metaTransfer()">Meta Transfer</button>
+  <br>
+
+  <input id="approveTo" placeholder="approve to..."></input>
+  <input id="approveAmount" placeholder="amount"></input>
+  <button onclick="approve()">Approve</button>
+  <button id="metaApproveButton" onclick="metaApprove()">Meta Approve</button>
+  <br>
+
+  <input id="transferFromFrom" placeholder="transfer from..." >
+  <input id="transferFromTo" placeholder="transfer to...">
+  <input id="transferFromAmount" placeholder="amount"></input>
+  <button onclick="transferFrom()">Transfer From</button>
+  <button id="metaTransferFromButton" onclick="metaTransferFrom()">Meta Transfer From</button>
+
+
+<br>
+<br>
+<table id="txHistoryEth">
+  <caption>Eth tx history</caption>
+  <tr>
+    <th>tx Hash</th>
+    <th>from</th>
+    <th></th>
+    <th>to</th>
+    <th>amount</th>
+    <th>time</th>
+  </tr>
+</table> <br><br><br>
+
+<table id="txHistoryToken">
+  <caption>Token tx history</caption>
+  <tr>
+    <th>tx Hash</th>
+    <th>from</th>
+    <th></th>
+    <th>to</th>
+    <th>amount</th>
+    <th>time</th>
+  </tr>
+</table>
+<script>
+switchWallet(web3)
+</script>
+</body>
+</html>
