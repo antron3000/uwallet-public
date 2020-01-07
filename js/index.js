@@ -148,7 +148,7 @@ async function getBalance(){
 
 async function resolveAddress(ensName){
 		if (ensName.includes(".")){
-			console.log(ensName)
+			alert(ensName)
 			let nameHash = utils.namehash(ensName)
 			ensName = await resolverContract.addr(nameHash)
 		}
@@ -162,67 +162,67 @@ async function updateToken(){
 	address = utils.getAddress(document.getElementById("tokenAddress").value)
 	tokenAddress = await resolveAddress(address);
 }catch {
-	console.log("invalid address")
+	alert("invalid address")
 }
 	initialize(web3)
 }
 
 function getNetwork() {
   if (typeof web3 !== 'undefined') {
-     console.log('web3 is enabled')
+     alert('web3 is enabled')
      if (web3.currentProvider.isMetaMask === true) {
-       console.log('MetaMask is active')
+       alert('MetaMask is active')
      } else {
-       console.log('MetaMask is not available')
+       alert('MetaMask is not available')
      }
    } else {
-     console.log('web3 is not found')
+     alert('web3 is not found')
    }
 
 	 web3.eth.getAccounts(function(err, accounts){
     if (err != null) console.error("An error occurred: "+err);
-    else if (accounts.length == 0) console.log("User is not logged in to MetaMask");
-    else console.log("User is logged in to MetaMask");
+    else if (accounts.length == 0) alert("User is not logged in to MetaMask");
+    else alert("User is logged in to MetaMask");
 });
   web3.version.getNetwork((err, netId) => {
   switch (netId) {
     case "1":
-      console.log('This is mainnet',netId)
+      alert('This is mainnet',netId)
       break
     case "2":
-      console.log('This is the deprecated Morden test network. Network ID:',netId)
+      alert('This is the deprecated Morden test network. Network ID:',netId)
       break
     case "3":
-      console.log('This is the ropsten test network. Network ID:',netId)
+      alert('This is the ropsten test network. Network ID:',netId)
       break
     case "4":
-      console.log('This is the rinkeby test network. Network ID:',netId)
+      alert('This is the rinkeby test network. Network ID:',netId)
       break
     case "5":
-      console.log('This is the goerli test network. Network ID:',netId)
+      alert('This is the goerli test network. Network ID:',netId)
       break
     case "42":
-      console.log('This is the kovan test network. Network ID:',netId)
+      alert('This is the kovan test network. Network ID:',netId)
       break
     default:
-      console.log('This is an unknown network. Network ID:',netId)
+      alert('This is an unknown network. Network ID:',netId)
   }
 })
 
 }
 
 async function getTxHistoryEth(){
-	console.log("getting ETH tx history")
+	alert("getting ETH tx history")
 	txHistoryEth = await etherscanProvider.getHistory(walletAddress)
 }
 async function getTxHistoryTokens() {
-	console.log("getting token tx history")
+	alert("getting token tx history")
 	txHistoryTokens = new Array();
 
 	let topic = ethers.utils.id("Transfer(address,address,uint256)");
 
   let blockNumber = await provider.getBlockNumber()
-console.log(blockNumber)
+alert(blockNumber)
 	let filter = {
     address: tokenAddress,
     fromBlock: 8000000,
@@ -231,11 +231,11 @@ console.log(blockNumber)
 	}
 
 	let result = await provider.getLogs(filter)
-	console.log(result)
-	console.log(result.length)
+	alert(result)
+	alert(result.length)
 		for (let j = 0;j<result.length;j++){
-			console.log(j)
-			//console.log(result[j])
+			alert(j)
+			//alert(result[j])
 			let tx = new Object()
 			tx.amount = utils.bigNumberify(result[j].data)
       tx.from = utils.getAddress("0x" + (result[j].topics[1]).slice(26,66))
@@ -251,7 +251,7 @@ console.log(blockNumber)
 async function displayTxHistoryEth(){
 	var txHistoryEthTable = document.getElementById('txHistoryEth')
 
-  console.log("display Eth Transaction History")
+  alert("display Eth Transaction History")
 
 	for(var o=0;o<txHistoryEth.length;o++){
 
@@ -307,7 +307,7 @@ async function displayTxHistoryEth(){
 
 async function displayTxHistoryTokens(){
 	var txHistoryTokenTable = document.getElementById('txHistoryToken')
-	console.log("display Token Transaction History")
+	alert("display Token Transaction History")
 	for(var o=0;o<txHistoryTokens.length;o++){
 
 			var newRow  = txHistoryTokenTable.insertRow(txHistoryTokenTable.rows.length);
@@ -333,18 +333,18 @@ async function displayTxHistoryTokens(){
 
 			var inOutCell = newRow.insertCell(2);
 			let inOutText
-			console.log(from)
-			console.log(to)
-			console.log(walletAddress)
+			alert(from)
+			alert(to)
+			alert(walletAddress)
 
 			if(from==walletAddress){
 				inOutText = document.createTextNode('OUT')
-				console.log("neah2")
+				alert("neah2")
 			} else if (to==walletAddress){
-				console.log("yeah")
+				alert("yeah")
 				inOutText = document.createTextNode('IN')
 			} else {
-				console.log("neah")
+				alert("neah")
 				inOutText = document.createTextNode('')
 			}
 			inOutCell.appendChild(inOutText)
@@ -390,7 +390,7 @@ async function switchNetwork(){
 		networkId = 5
 		networkName = "goerli"
 	} else{
-		console.log("love")
+		alert("love")
 		document.getElementById("mainnet_network").checked = true;
 		switchNetwork()
 	}
@@ -398,26 +398,26 @@ async function switchNetwork(){
 }
 
 async function switchWallet(web3) {
-	console.log("abcd")
+	alert("abcd")
 
 		//document.getElementById("mainnet_network").checked=true
 
 		await switchNetwork()
-		console.log("test1")
+		alert("test1")
 		let mnemonic = localStorage.getItem("mnemonic")
-		console.log(mnemonic)
+		alert(mnemonic)
 		if (mnemonic == undefined) {
 			wallet = ethers.Wallet.createRandom().connect(ethers.getDefaultProvider(networkName));
 			localStorage.setItem("mnemonic",wallet.signingKey.mnemonic)
 		} else {
 			wallet = ethers.Wallet.fromMnemonic(mnemonic).connect(ethers.getDefaultProvider(networkName));
 		}
-		console.log("test2")
-		console.log(wallet)
+		alert("test2")
+		alert(wallet)
 		walletAddress = wallet.address
-		console.log(walletAddress)
+		alert(walletAddress)
 		enableNetworkButtons()
-		console.log("enabled")
+		alert("enabled")
 		initialize(web3)
 
 }
