@@ -15,6 +15,8 @@
   </script>
   <script src="js/main.js"></script>
 
+
+
   <meta charset="utf-8">
   <title>Hello World</title>
   <link rel="manifest" href="manifest.json">
@@ -30,20 +32,48 @@
   <meta name="msapplication-TileColor" content="#FFFFFF">
 </head>
 <body>
+  <!--
+send eth
+address input
+amount input
+max amount
+paste
+scan
+call send function on submit
+style it up
+-->
+
+  <ul class="flex-container longhand">
   <input type="radio" name="network" value="1" id="mainnet_network" onchange="switchWallet(web3)" >Mainnet</input>
   <input type="radio" name="network" value="3" id="ropsten_network" onchange="switchWallet(web3)">Ropsten</input>
   <input type="radio" name="network" value="42" id="kovan_network" onchange="switchWallet(web3)">Kovan</input>
   <input type="radio" name="network" value="4" id="rinkeby_network" onchange="switchWallet(web3)">Rinkeby</input>
   <input type="radio" name="network" value="5" id="goerli_network" onchange="switchWallet(web3)">Goerli</input>
-
+</ul>
   <hr>
 
-  <input id="tokenAddress" onchange="updateToken()">Token Address</input>
+  <form onsubmit="updateToken()">
+    <input id="tokenAddress" onchange="updateToken()" placeholder = "Token Address"></input>
+    <input class = "walletSubmit" type="submit" value="Load" size="35">
+
+  </form>
   <hr>
 
-  <label id="myAddress">My Address: </label> <br>
+  <label id="myAddress">My Adsdress: </label> <br>
   <label id="myEthBalance">My Eth Balance: </label>
   <hr>
+  <div class="EtherWallet">
+    <form onsubmit="sendEther()">
+      <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Address">
+      <input class = "walletInput" type = "number" placeholder="Amount">
+      <input class = "walletSubmit" type="submit" value="Send" size="35">
+    </form>
+    <form>
+      <img id="qrcode2"></img>
+    </form>
+  </div>
+  <div class="recieve">
+  </div>
   <h3>ERC20</h3>
   <h5>token details</h5>
   <label id="nameLabel">Token Name: </label><br>
@@ -55,29 +85,60 @@
 
   <h5>Balances</h5>
   <label id="balanceLabel">Balance: </label><br>
-  <label>Approved: </label>
-  <input id = "approvedTo" placeholder="spender..." onchange="allowance()"></input>
-  <label id = "approvedAmount"></label>
-
   <h5>Token Functions</h5>
-  <input id="transferTo" placeholder="transfer to..." ></input>
-  <input id="transferAmount" placeholder="amount"></input>
-  <button onclick="transfer()">Transfer</button>
-  <button id="metaTransferButton" onclick="metaTransfer()">Meta Transfer</button>
+
+  <form onsubmit="transfer()">
+    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
+    <input class = "walletInput" type = "number" placeholder="Amount">
+    <input class = "walletSubmit" type="submit" value="Transfer" size="35">
+  </form>
+
+  <form onsubmit="metaTransfer()">
+    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
+    <input class = "walletInput" type = "number" placeholder="Amount">
+    <input class = "walletSubmit" type="submit" value="MetaTransfer" size="35">
+  </form>
   <br>
 
-  <input id="approveTo" placeholder="approve to..."></input>
-  <input id="approveAmount" placeholder="amount"></input>
-  <button onclick="approve()">Approve</button>
-  <button id="metaApproveButton" onclick="metaApprove()">Meta Approve</button>
+  <form onsubmit="approve()">
+    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Approve To...">
+    <input class = "walletInput" type = "number" placeholder="Amount">
+    <input class = "walletSubmit" type="submit" value="Approve" size="35">
+  </form>
+
+  <form onsubmit="metaApprove()">
+    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Approve To...">
+    <input class = "walletInput" type = "number" placeholder="Amount">
+    <input class = "walletSubmit" type="submit" value="MetaApprove" size="35">
+  </form>
   <br>
 
+  <form onsubmit="transferFrom()">
+    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer From...">
+    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
+
+    <input class = "walletInput" type = "number" placeholder="Amount">
+    <input class = "walletSubmit" type="submit" value="TransferFrom" size="35">
+  </form>
+
+  <form onsubmit="metaTransferFrom()">
+    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer From...">
+    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
+    <input class = "walletInput" type = "number" placeholder="Amount">
+    <input class = "walletSubmit" type="submit" value="MetaTransferFrom" size="35">
+  </form>
+  <br>
+
+
+
+
+<!--
   <input id="transferFromFrom" placeholder="transfer from..." >
   <input id="transferFromTo" placeholder="transfer to...">
   <input id="transferFromAmount" placeholder="amount"></input>
   <button onclick="transferFrom()">Transfer From</button>
   <button id="metaTransferFromButton" onclick="metaTransferFrom()">Meta Transfer From</button>
-
+-->
 
 <br>
 <br>

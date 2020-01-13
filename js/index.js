@@ -84,6 +84,7 @@ async function initialize(web3) {
 	await getTxHistoryTokens()
 	await displayTxHistoryEth()
 	await displayTxHistoryTokens()
+	generateQRcode()
 }
 
 async function getElements(){
@@ -459,4 +460,12 @@ function disableNetworkButtons() {
 
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function sendEther() {
+	alert("aaa")
+}
+
+function generateQRcode() {
+document.getElementById("qrcode2").src = "https://api.qrserver.com/v1/create-qr-code/?data=" + walletAddress
 }

@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Make content area fill the entire browser window */
@@ -12,6 +14,29 @@ html,
   width: 100%;
 }
 
+form{
+  display:flex;
+  flex-direction:column;
+  border: solid;
+  border-color: black;
+}
+
+
+form input {
+  height:30px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid;
+  outline: none;
+  font-size:18px
+
+}
+
+form .walletSubmit {
+  background-color: #cc9933;
+
+}
+
 /* Center the content in the browser window */
 .container {
   margin: auto;
@@ -20,4 +45,23 @@ html,
 
 .title {
   font-size: 3rem;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+.longhand {
+  flex-flow: wrap row;
+}
+.flex-item {
+  color: #C3D0D9;
+  border: 1px solid #C3D0D9;
+  width: 50px;
+  height: 50px;
+  font-size: 1.3em;
+  text-align: center;
+  padding: 10px;
 }
