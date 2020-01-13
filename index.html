@@ -63,9 +63,9 @@ style it up
   <label id="myEthBalance">My Eth Balance: </label>
   <hr>
   <div class="EtherWallet">
-    <form onsubmit="sendEther()">
-      <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Address">
-      <input class = "walletInput" type = "number" placeholder="Amount">
+    <form onsubmit="sendEther(this['Address'].value,this['Amount'].value); return false;">
+      <input name = "Address" class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Address">
+      <input name = "Amount" class = "walletInput" type = "number" step="0.00000000001" placeholder="Amount">
       <input class = "walletSubmit" type="submit" value="Send" size="35">
     </form>
     <form>
@@ -87,41 +87,40 @@ style it up
   <label id="balanceLabel">Balance: </label><br>
   <h5>Token Functions</h5>
 
-  <form onsubmit="transfer()">
-    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
-    <input class = "walletInput" type = "number" placeholder="Amount">
+  <form onsubmit="transfer(this['Address'].value,this['Amount'].value);return false;">
+    <input name = "Address" class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
+    <input name = "Amount" class = "walletInput" type = "number" placeholder="Amount">
     <input class = "walletSubmit" type="submit" value="Transfer" size="35">
   </form>
 
-  <form onsubmit="metaTransfer()">
+  <form onsubmit="metaTransfer(this['Address'].value,this['Amount'].value); return false;">
     <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
     <input class = "walletInput" type = "number" placeholder="Amount">
     <input class = "walletSubmit" type="submit" value="MetaTransfer" size="35">
   </form>
   <br>
 
-  <form onsubmit="approve()">
-    <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Approve To...">
-    <input class = "walletInput" type = "number" placeholder="Amount">
+  <form onsubmit="approve(this['Address'].value,this['Amount'].value); return false;">
+    <input name = "Address" class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Approve To...">
+    <input name = "Amount" class = "walletInput" type = "number" placeholder="Amount">
     <input class = "walletSubmit" type="submit" value="Approve" size="35">
   </form>
 
-  <form onsubmit="metaApprove()">
+  <form onsubmit="metaApprove(this['Address'].value,this['Amount'].value); return false;">
     <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Approve To...">
     <input class = "walletInput" type = "number" placeholder="Amount">
     <input class = "walletSubmit" type="submit" value="MetaApprove" size="35">
   </form>
   <br>
 
-  <form onsubmit="transferFrom()">
+  <form onsubmit="transferFrom(this['Address'].value,this['Amount'].value); return false;">
     <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer From...">
     <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
-
     <input class = "walletInput" type = "number" placeholder="Amount">
     <input class = "walletSubmit" type="submit" value="TransferFrom" size="35">
   </form>
 
-  <form onsubmit="metaTransferFrom()">
+  <form onsubmit="metaTransferFrom(this['Address'].value,this['Amount'].value); return false;">
     <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer From...">
     <input class = "walletInput" type = "text" pattern = "^0x[a-fA-F0-9]{40}$" placeholder="Transfer To...">
     <input class = "walletInput" type = "number" placeholder="Amount">

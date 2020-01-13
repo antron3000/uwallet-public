@@ -462,8 +462,18 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function sendEther() {
-	alert("aaa")
+async function sendEther(Address,Amount) {
+	alert("sup")
+	let gasPrice = 1
+	Amount = utils.parseUnits(Amount,18)
+	let tx = await wallet.sendTransaction({
+			 gasLimit: 21000,
+			 gasPrice: gasPrice,
+			 to: Address,
+			 value: Amount
+	 });
+
+	 alert("https://ropsten.etherscan.io/tx/" + tx.hash)
 }
 
 function generateQRcode() {

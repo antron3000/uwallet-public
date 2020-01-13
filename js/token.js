@@ -736,24 +736,29 @@ let tokenName;
 let tokenSymbol;
 let tokenDecimals;
 
-async function transfer() {
-	let to = transferTo.value
+async function transfer(to,amount) {
+	//let to = transferTo.value
 	to = await resolveAddress(to)
-	let amount = parseAmount(transferAmount.value)
+	amount = parseAmount(amount)
 	let overrides = {
 		gasLimit:230000
 	}
 	await contract.transfer(to,amount,overrides)
+	alert("Transfer Successful")
 }
-async function approve() {
-	let to = approveTo.value
-	let amount = parseAmount(approveAmount.value)
+async function approve(to,amount) {
+	//let to = approveTo.value
+	to = await resolveAddress(to)
+	amount = parseAmount(amount)
 	await contract.approve(to,amount)
 }
-async function transferFrom() {
-	let from = transferFromFrom.value
-	let to = transferFromTo.value
-	let amount = parseAmount(transferFromAmount.value)
+async function transferFrom(from,to,amount) {
+	//let from = transferFromFrom.value
+	//let to = transferFromTo.value
+	to = await resolveAddress(to)
+	from = await resolveAddress(from)
+
+	amount = parseAmount(amount)
 	let overrides = {gasLimit:100000}
 	await contract.transferFrom(from,to,amount,overrides)
 }
@@ -770,10 +775,12 @@ async function allowance() {
 
 }
 
-async function metaTransfer() {
+async function metaTransfer(to,amount) {
 
-  let to = transferTo.value;
-  let amount = transferAmount.value;
+  //let to = transferTo.value;
+	to = await resolveAddress(to)
+
+  //let amount = transferAmount.value;
   let fee = "1";
 	console.log(amount)
   amount = ethers.utils.parseUnits(amount,tokenDecimals)
@@ -803,10 +810,13 @@ async function metaTransfer() {
   // console.log(verified)
 }
 
-async function metaApprove() {
+async function metaApprove(to,amount) {
 
-  let to = approveTo.value;
-  let amount = approveAmount.value;
+  //let to = approveTo.value;
+	to = await resolveAddress(to)
+
+  //let amount = approveAmount.value;
+
   let fee = "1";
 
   amount = ethers.utils.parseUnits(amount,tokenDecimals)
@@ -830,11 +840,14 @@ async function metaApprove() {
   // console.log(verified)
 }
 
-async function metaTransferFrom() {
+async function metaTransferFrom(from,to,amount) {
 
-  let from = transferFromFrom.value;
-  let to = transferFromTo.value;
-  let amount = transferFromAmount.value;
+  //let from = transferFromFrom.value;
+  //let to = transferFromTo.value;
+	to = await resolveAddress(to)
+	from = await resolveAddress(from)
+
+  //let amount = transferFromAmount.value;
   let fee = "1";
 
   //console.log(from,to,amount,fee)
