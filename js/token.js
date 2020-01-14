@@ -721,7 +721,7 @@ let tokenABI = [
 ]
 
 let defaultTokenAddresses = {
-	1:"0x0fca8Fdb0FB115A33BAadEc6e7A141FFC1bC7d5a",  //mainnet
+	1:"0x92e52a1A235d9A103D970901066CE910AAceFD37",  //mainnet
 	3: "0xE6CC8c8cF673f13fc6090b4b7B619E61C473CD34", //ropsten
 	42:"0xF10F754c6734Dcc8b4B78e462dCc85C15F359718", //kovan
 	4: "0x3689C19A7407E354fEFA41aA51cB138898f7ee8e", //rinkeby
