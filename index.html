@@ -43,7 +43,7 @@ call send function on submit
 style it up
 -->
 
-  <ul class="flex-container longhand">
+<ul class="flex-container longhand">
   <input type="radio" name="network" value="1" id="mainnet_network" onchange="switchWallet(web3)" >Mainnet</input>
   <input type="radio" name="network" value="3" id="ropsten_network" onchange="switchWallet(web3)">Ropsten</input>
   <input type="radio" name="network" value="42" id="kovan_network" onchange="switchWallet(web3)">Kovan</input>
@@ -55,11 +55,10 @@ style it up
   <form onsubmit="updateToken()">
     <input id="tokenAddress" onchange="updateToken()" placeholder = "Token Address"></input>
     <input class = "walletSubmit" type="submit" value="Load" size="35">
-
   </form>
   <hr>
 
-  <label id="myAddress">My Adsdress: </label> <br>
+  <label id="myAddress">My Address: </label> <br>
   <label id="myEthBalance">My Eth Balance: </label>
   <hr>
   <div class="EtherWallet">
