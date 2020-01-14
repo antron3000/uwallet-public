@@ -82,8 +82,8 @@ async function initialize(web3) {
 
 	await getTxHistoryEth()
 	await getTxHistoryTokens()
-	await displayTxHistoryEth()
-	await displayTxHistoryTokens()
+	//await displayTxHistoryEth()
+	//await displayTxHistoryTokens()
 	generateQRcode()
 }
 
